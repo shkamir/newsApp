@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+
+    news page
+{% endblock %}
+{% block content %}
+    <div class="container">
+        {% for new in news %}
+            <ul class="list-group">x
+                <li>{{ new.title }}</li>
+                <br>
+                <li class=list-group-item>{{ new.description|safe|truncatechars_html:100 }}</li>
+                <a href="{{ new.get_absolute_url }}"> continue</a>
+
+            </ul>
+      
+        {% endfor %}
+    </div>
+
+{% endblock %}

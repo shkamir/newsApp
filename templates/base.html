@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}">
+</head>
+<body>
+<a href="{% url 'app1:home' %}" class="btn-success">home</a>
+{% block content %}
+
+    <div class="container">
+        <div class="row-cols-lg-1">
+            <a href="{% url 'app1:blog' %}" class="alert-link">blog</a>
+            <a href="{% url 'app1:news' %}" class="alert-link">news</a>
+        </div>
+    </div>
+{% endblock %}
+</body>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</html>
