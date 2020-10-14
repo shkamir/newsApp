@@ -1,0 +1,4 @@
+---------------------TODO------------------------
+1 - make absolute url for blog model as well
+2 - do some beuitifications 
+
