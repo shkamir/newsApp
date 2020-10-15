@@ -6,10 +6,11 @@ from .models import News, Blog
 def base(request):
     return render(request, 'base.html')
 
-def more_news(request, id=None):
+def more_news(request, id=None, title=None):
     """ gets id from get absolute url in News model """
-    news = get_object_or_404(News, id=id)
+    news = get_object_or_404(News, id=id, title=title)
     context = { 
+        "title": news.title,
         "news": news
     }
     return render(request, 'news_detail.html',context=context)
@@ -26,17 +27,18 @@ def news(request):
     return render(request, 'news.html', context=context)
 
 
+def more_blogs(request,id=None, name=None):
+    blog = get_object_or_404(Blog, id=id, name=name)
+    context = {
+        "title": blog.name,
+        "blog": blog
+    }
+    return render(request, 'blogs_detail.html', context)
+
 def blog(request):
 
     """ Handles Blog Model """
-
-    #TODO: make these comments dynamic and use them :/ 
-#   old=Blog.objects.filter(name="newwwwww")
-#    for older in old:
-
-#Blog.objects.create(name="new2", content=f"this content created because blog object {older.name} have been deleted")
-#    old.delete()
-    blog = Blog.objects.all().order_by('-id')[:4]
+    blog = Blog.objects.all().order_by('-id')
     context = {
         "title": "blog page",
         "blog": blog
