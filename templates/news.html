@@ -9,7 +9,7 @@
         <hr>
         <br>
             <ul class="list-group">
-                <li class="list-group-item">{{ new.title }}</li>
+                <li class="list-group-item active">{{ new.title }}</li>
                 <li class="list-group-item">{{ new.description|safe|truncatechars_html:100 }}</li>
                 <li class="list-group-item"><a href="{{ new.get_absolute_url }}"> continue</a></li>
             </ul>

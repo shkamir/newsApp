@@ -4,9 +4,18 @@
 
     <div class="container">
         {% for b in blog %}
+            <ul class="list-group">
+            <li class="list-group-item active">
                 {{  b.name }}
-            {{ b.content|safe|truncatechars_html:100}}
+            </li>
+            <li class="list-group-item"">
+                {{ b.content|safe|truncatechars_html:100}}
+            </li>
+            <li class="list-group-item">
+
             <a href="{{ b.get_absolute_url }}">Continue ...</a>
+                </li>
+        </ul>
 
         {% endfor %}
     </div>
