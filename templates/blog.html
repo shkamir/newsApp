@@ -8,7 +8,8 @@
                 {{  b.name }}
             </div>
             <div class="align-content-center">
-            {{ b.content|safe}}
+            {{ b.content|safe|truncatechars_html:100}}
+            <a href="{{ b.get_absolute_url }}">Continue ...</a>
             </div>
             <hr><br><br>
 
