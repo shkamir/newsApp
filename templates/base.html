@@ -9,14 +9,41 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}">
 </head>
 <body>
-<a href="{% url 'app1:home' %}" class="btn-success">home</a>
-{% block content %}
+    
 
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'app1:home' %}">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'app1:blog' %}">Blog <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'app1:news' %}">News <span class="sr-only">(current)</span></a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- main content -->
+{% block content %}
+<!-- TODO: make login reqiured and add redirect to login -->
+<div class="container-fluid">
     <div class="container">
-        <div class="row-cols-lg-1">
-            <a href="{% url 'app1:blog' %}" class="alert-link">blog</a>
-            <a href="{% url 'app1:news' %}" class="alert-link">news</a>
+        <div class="row">
+          <div class="col-sm">
+        <a type="button" class="btn btn-outline-dark" href="{% url 'app1:blog' %}">Blog</a>
+          </div>
+          <div class="col-sm">
+            <a type="button" class="btn btn-outline-dark" href="{% url 'app1:news' %}">News</a>
+          </div>
         </div>
+      </div>
     </div>
 {% endblock %}
 </body>

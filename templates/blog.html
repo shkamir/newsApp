@@ -4,14 +4,9 @@
 
     <div class="container">
         {% for b in blog %}
-            <div class="modal-title bg-dark text-white">
                 {{  b.name }}
-            </div>
-            <div class="align-content-center">
             {{ b.content|safe|truncatechars_html:100}}
             <a href="{{ b.get_absolute_url }}">Continue ...</a>
-            </div>
-            <hr><br><br>
 
         {% endfor %}
     </div>

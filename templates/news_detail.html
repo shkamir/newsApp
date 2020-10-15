@@ -3,9 +3,9 @@
 {{ title }}
 {% endblock %}
 {% block content %}
-
-                {{ news.title }}
-
-                {{ news.description|safe }}
-
+<div class="container"><h1>{{news.title}} <span class="badge badge-dark">{{ news.publish}}</span></h1>
+                
+<div class="bg-dark text-white container-fluid">{{ news.description|safe }}</div>
+                
+</div>
 {% endblock %}
