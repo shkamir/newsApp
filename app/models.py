@@ -22,7 +22,7 @@ class News(models.Model):
 
 class Blog(models.Model):
     name = models.CharField(max_length=100)
-    content = models.TextField()
+    content = RichTextUploadingField()
     publish_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     # todo: create other things like blog page and linking and add moreeee things in data bases
