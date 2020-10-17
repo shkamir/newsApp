@@ -11,11 +11,12 @@ class News(models.Model):
 
     # get url of unique id 
     def get_absolute_url(self):
-        return reverse("app1:news-query", args=[str(self.id),self.title])
+        return reverse("app1:news-query", args=[str(self.id), self.title])
     
     def __str__(self):
         return self.title
     class Meta:
+        verbose_name = 'New'
         verbose_name_plural = 'News'
 
 
@@ -32,4 +33,9 @@ class Blog(models.Model):
     def get_absolute_url(self):
 
         return reverse("app1:blogs-query", args=[str(self.id), self.name])
-    
+   
+    class Meta:
+        verbose_name = 'Post'
+        verbose_name_plural = 'Blog'
+
+
