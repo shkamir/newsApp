@@ -8,8 +8,8 @@ def base(request):
 
 def more_news(request, id=None, title=None):
     """ gets id from get absolute url in News model """
-    news = get_object_or_404(News, id=id)
-    context = { 
+    news = get_object_or_404(News, id=id, title=title)
+    context = {
         "title": news.title,
         "news": news
     }
@@ -28,7 +28,7 @@ def news(request):
 
 
 def more_blogs(request,id=None, name=None):
-    blog = get_object_or_404(Blog, id=id)
+    blog = get_object_or_404(Blog, id=id, name=name)
     context = {
         "title": blog.name,
         "blog": blog

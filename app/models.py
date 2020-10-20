@@ -9,15 +9,15 @@ class News(models.Model):
     publish = models.DateField(auto_now_add=True)
 
 
-    # get url of unique id 
+    # get url of unique id
     def get_absolute_url(self):
-        return reverse("app1:news-query", args=[str(self.id)])
-    
+        return reverse("app1:news-query", args=[str(self.id), self.title])
+
     def __str__(self):
         return self.title
     class Meta:
         verbose_name = 'New'
-        verbose_name_plural = 'News'
+        verbose_name_plural = "New's"
 
 
 
@@ -29,11 +29,11 @@ class Blog(models.Model):
     # todo: create other things like blog page and linking and add moreeee things in data bases
     def __str__(self):
         return self.name
-    
+
     def get_absolute_url(self):
 
-        return reverse("app1:blogs-query", args=[str(self.id)])
-   
+        return reverse("app1:blogs-query", args=[str(self.id), self.name])
+
     class Meta:
         verbose_name = 'Post'
         verbose_name_plural = 'Blog'
