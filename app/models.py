@@ -1,7 +1,7 @@
 from django.db import models
 from django.shortcuts import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
-
+# from django.utils import timezone
 # Create your models here.
 class News(models.Model):
     title = models.CharField(max_length=200)
@@ -39,3 +39,8 @@ class Blog(models.Model):
         verbose_name_plural = 'Blog'
 
 
+class NazarSanji(models.Model):
+    """ model for nazar ha """
+    comment = models.TextField()
+    now = models.DateTimeField(auto_now_add=True)
+    isRead = models.BooleanField(default=False)

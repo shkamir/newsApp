@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from app.models import News, Blog
+from app.models import News, Blog, NazarSanji
 
 
 class NewsManager(admin.ModelAdmin):
@@ -18,7 +18,14 @@ class BlogManage(admin.ModelAdmin):
     search_fields = ('name', 'content',)
     class Meta:
         model = Blog
-
+class NazarManage(admin.ModelAdmin):
+    list_display = ('comment',)
+    list_filter = ('now','isRead',)
+    search_fields = ('comment',)
+    class Meta:
+        model = NazarSanji
 
 admin.site.register(News, NewsManager)
 admin.site.register(Blog, BlogManage)
+admin.site.register(NazarSanji, NazarManage)
+

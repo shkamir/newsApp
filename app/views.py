@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .models import News, Blog
-
+from .models import News, Blog, NazarSanji
+from django.contrib import messages
 
 # Create your views here.
 def base(request):
@@ -44,3 +44,16 @@ def blog(request):
         "blog": blog
     }
     return render(request, 'blog.html', context)
+
+
+def comment(request):
+    """ handels comments """
+    if request.method == "POST":
+        # print (request.POST)
+        this_comment = request.POST.get("cm")
+        # print (comment)
+        myCm = NazarSanji(comment=this_comment)
+        myCm.save()
+    
+    messages.success(request, "SENT")
+    return render(request, "nazarha.html")
