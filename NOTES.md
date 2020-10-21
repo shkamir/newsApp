@@ -1,7 +1,1 @@
-TODO
-- make comment for news 
-
-- make comment for blogs
-
-
-
+- safhe nazar sangi 
