@@ -62,15 +62,24 @@ def comment(request):
 def search(request):
     query = request.GET.get("q")
     button = request.GET.get("submitbutton")
+    category = request.GET.get("category")
     # TODO: make the choice to the client to search in blogs or news
     if query is not None:
-        lookup = Q(title__icontains=query)
-        result = News.objects.filter(lookup)
-        context = {
-            "result": result,
-            "button": button,
-        }
-        return render(request,"seach.html", context)
-
+        if category == "news":
+            lookup = Q(title__icontains=query)
+            result = News.objects.filter(lookup)
+            context = {
+                "result": result,
+                "button": button,
+            }
+            return render(request,"seach.html", context)
+        elif category == "blog":
+            lookup = Q(name__icontains=query)
+            result = Blog.objects.filter(lookup)
+            context = {
+                "result": result,
+                "button": button,
+            }
+            return render(request,"seach.html", context)            
 
     return render(request,"seach.html")

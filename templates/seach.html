@@ -3,15 +3,24 @@
 <div class="container text-center">
     <form class="" action="{% url 'app1:search' %}" method="get">
 
-    <input type="text" name="q" value="{{request.GET.q}}">
-    <button type="submit" name="submitbutton" value="search">
+
+      <input type="radio" id="blog" name="category" value="blog" class="form-control-sm">
+      <label for="blog" class="form-control-sm">Blog</label><br>
+      <input type="radio" id="female" name="category" value="news" class="form-control-sm">
+      <label for="news" class="form-control-sm">News</label><br>
+
+    <input type="search" name="q" value="{{request.GET.q}}" placeholder="  Search ..."><br><br>
+    <button type="submit" name="submitbutton" value="search" class="btn btn-info">
       Search
-    </button>
+    </button><br>
   </form>
   <br>
   <br>
   <hr>
   <br>
+  <div class="bg-dark text-white text-center container">
+
+  {% if request.GET.category == "news" %}
   {% if button == "search" and request.GET.q != "" %}
     {% if result %}
       {% for r in result %}
@@ -26,6 +35,25 @@
         <span>Nothing found</span>
     {% endif %}
   {% endif %}
+  {% endif %}
+
+  {% if request.GET.category == "blog" %}
+  {% if button == "search" and request.GET.q != "" %}
+    {% if result %}
+      {% for r in result %}
+        <span>{{r.name}}</span>
+        <br>
+        <span>{{r.content|safe|truncatechars_html:100}}</span>
+        <br>
+        <a href="{{r.get_absolute_url}}">Continue ...</a>
+      {% endfor %}
+      {% else %}
+      <br>
+        <span>Nothing found</span>
+    {% endif %}
+  {% endif %}
+  {% endif %}
+  </div>
 </div>
 
 
