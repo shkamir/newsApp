@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import News, Blog, NazarSanji
 from django.contrib import messages
-
+from django.db.models import Q
 # Create your views here.
 def base(request):
     return render(request, 'base.html')
@@ -54,6 +54,23 @@ def comment(request):
         # print (comment)
         myCm = NazarSanji(comment=this_comment)
         myCm.save()
-    
+
     messages.success(request, "SENT")
     return render(request, "nazarha.html")
+
+
+def search(request):
+    query = request.GET.get("q")
+    button = request.GET.get("submitbutton")
+    # TODO: make the choice to the client to search in blogs or news
+    if query is not None:
+        lookup = Q(title__icontains=query)
+        result = News.objects.filter(lookup)
+        context = {
+            "result": result,
+            "button": button,
+        }
+        return render(request,"seach.html", context)
+
+
+    return render(request,"seach.html")

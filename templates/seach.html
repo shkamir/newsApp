@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container text-center">
+    <form class="" action="{% url 'app1:search' %}" method="get">
+
+    <input type="text" name="q" value="{{request.GET.q}}">
+    <button type="submit" name="submitbutton" value="search">
+      Search
+    </button>
+  </form>
+  <br>
+  <br>
+  <hr>
+  <br>
+  {% if button == "search" and request.GET.q != "" %}
+    {% if result %}
+      {% for r in result %}
+        <span>{{r.title}}</span>
+        <br>
+        <span>{{r.description|safe|truncatechars_html:100}}</span>
+        <br>
+        <a href="{{r.get_absolute_url}}">Continue ...</a>
+      {% endfor %}
+      {% else %}
+      <br>
+        <span>Nothing found</span>
+    {% endif %}
+  {% endif %}
+</div>
+
+
+{% endblock %}
