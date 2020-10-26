@@ -44,3 +44,12 @@ class NazarSanji(models.Model):
     comment = models.TextField()
     now = models.DateTimeField(auto_now_add=True)
     isRead = models.BooleanField(default=False)
+
+class Contact(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    message = models.TextField()
+    file = models.FileField(blank=True, null=True)
+    class Meta:
+        verbose_name = "contact"
+        verbose_name_plural = "contact form's"

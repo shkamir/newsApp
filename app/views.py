@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from .models import News, Blog, NazarSanji
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import News, Blog, NazarSanji, Contact
 from django.contrib import messages
 from django.db.models import Q
+from .forms import ContactForm
 # Create your views here.
 def base(request):
     return render(request, 'base.html')
@@ -83,3 +84,19 @@ def search(request):
             return render(request,"seach.html", context)            
 
     return render(request,"seach.html")
+
+
+def contact(request):
+    form = ContactForm()
+    if request.method == "POST":
+        form = ContactForm(request.POST or None) 
+        form.save()    
+        name=form.cleaned_data.get("name")
+       	messages.success(request,"successfilly sent")
+        client = Contact.objects.filter(name=name)
+        form = ContactForm()
+        redirect("app1:contact")
+        return render(request, "contact.html", {"form": form, "client":client})
+    else:
+    	return render(request, "contact.html", {"form": form})
+

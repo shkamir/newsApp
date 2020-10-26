@@ -28,6 +28,10 @@
         <li class="nav-item active">
             <a class="nav-link" href="{% url 'app1:news' %}">News <span class="sr-only">(current)</span></a>
           </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'app1:contact' %}">Contact <span class="sr-only">(current)</span></a>
+          </li>
       </ul>
     </div>
   </nav>
@@ -42,6 +46,9 @@
           </div>
           <div class="col-sm">
             <a type="button" class="btn btn-outline-dark active" href="{% url 'app1:news' %}">News</a>
+          </div>
+          <div class="col-sm">
+            <a type="button" class="btn btn-outline-dark active" href="{% url 'app1:contact' %}">Contact</a>
           </div>
         </div>
       </div>
