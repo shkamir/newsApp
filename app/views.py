@@ -89,7 +89,7 @@ def search(request):
 def contact(request):
     form = ContactForm()
     if request.method == "POST":
-        form = ContactForm(request.POST or None) 
+        form = ContactForm(request.POST, request.FILES or None) 
         form.save()    
         name=form.cleaned_data.get("name")
        	messages.success(request,"successfilly sent")

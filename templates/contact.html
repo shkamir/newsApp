@@ -25,7 +25,7 @@
 <!-- name email message file  -->
 <div class="container">
   <div class="row col-sm-12">
-    <form action="{% url 'app1:contact' %}" method="POST">
+    <form action="{% url 'app1:contact' %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{form.as_p}}
       <br />
