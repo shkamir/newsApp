@@ -1,4 +1,7 @@
 .env/
+venv/
+__pycache__/
+migrations/
 *sqlite3
 media/
 *pyc

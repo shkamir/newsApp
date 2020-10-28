@@ -47,8 +47,54 @@ class ContactForm(ModelForm):
         fields = "__all__"
 
 class RegisterForm(UserCreationForm):
-    """ register user form """
+    """ registering user """
+    username = forms.CharField(
+        label="Username ",
+        label_suffix="",
+        widget=forms.TextInput(
+            attrs={"class":"form-control", "placeholder": "Type in Your User name"},
+        ),
+        required=True,
+    )
+    first_name = forms.CharField(
+        label="Full name ",
+        label_suffix="",
+        widget=forms.TextInput(
+            attrs={"class":"form-control", "placeholder": "Type in Your Full name "},
+        ),
+        required=True,
+    )
+    email = forms.EmailField(
+              label="Email ",
+              label_suffix="",
+              widget=forms.EmailInput(
+                    attrs={"class":"form-control", "placeholder": "Enter your Email Address "},
+              ),
+              required=True,
+              )
+    password1 = forms.CharField(
+            label="Password ",
+            label_suffix="",
+            max_length=32,
+            widget=forms.PasswordInput(attrs={"class":"form-control", "placeholder": "Type your desired Password"}),
+            required=True,
+            )
+    password2 = forms.CharField(
+        label="Confirm Password ",
+        label_suffix="",
+        max_length=32,
+        widget=forms.PasswordInput(attrs={"class":"form-control", "placeholder": "Confirm your Password"}),
+        required=True,
+        )
     class Meta:
         model = User
-        #TODO: use in a template and views.py
-        fields = ("full_name","username", "email", "password1", "password2",)
+        fields = (
+            "username",  # form user name
+            "first_name",  # for first name
+            "email",  # for email
+            "password1",  # for password
+            "password2",  # for password confirm
+        )
+        help_texts = {
+            "username": None,
+        }

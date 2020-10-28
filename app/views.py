@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import News, Blog, NazarSanji, Contact
 from django.contrib import messages
 from django.db.models import Q
-from .forms import ContactForm
+from .forms import ContactForm, RegisterForm
+
 # Create your views here.
 def base(request):
     return render(request, 'base.html')
@@ -100,3 +101,30 @@ def contact(request):
     else:
     	return render(request, "contact.html", {"form": form})
 
+def register(request):
+    """ handles register """
+    form = RegisterForm()
+    
+    if request.method == "POST":
+        # code
+        form = RegisterForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request, " Successfull.")
+            return redirect('app1:home')
+        else:
+            messages.error(request, " Failed.")
+            redirect('app1:register', messages)
+
+        print ("this is %s" % request.method)
+
+        context = {
+            "form": form   
+        }
+        return render(request, 'register.html', context)
+
+
+    context = {
+        "form": form   
+    }
+    return render(request, 'register.html', context)
