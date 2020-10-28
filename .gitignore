@@ -1,5 +1,7 @@
 .env/
 venv/
+.vscode/
+*.json
 __pycache__/
 migrations/
 *sqlite3
