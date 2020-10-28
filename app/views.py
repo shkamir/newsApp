@@ -114,9 +114,7 @@ def register(request):
             return redirect('app1:home')
         else:
             messages.error(request, " Failed.")
-            redirect('app1:register', messages)
-
-        print ("this is %s" % request.method)
+            print ("this is %s" % request.method)
 
         context = {
             "form": form   

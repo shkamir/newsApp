@@ -8,8 +8,12 @@
       <input type="radio" id="female" name="category" value="news" class="form-control-sm">
       <label for="news" class="form-control-sm">News</label><br>
 
-    <input type="search" name="q" value="{{request.GET.q}}" placeholder="  Search ..."><br><br>
-    <button type="submit" name="submitbutton" value="search" class="btn btn-info">
+      {% if request.GET.q %}
+      <input type="search" name="q" value="{{request.GET.q}}" placeholder="  Search ..."><br><br>
+      {% else %}
+      <input type="search" name="q"  placeholder="  Search ..."><br><br>
+      {% endif %}
+    <button type="submit" name="submitbutton"  class="btn btn-info">
       Search
     </button><br>
   </form>
