@@ -1,6 +1,10 @@
 from django.forms import ModelForm
 from django import forms
 from .models import Contact
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+
 
 
 class ContactForm(ModelForm):
@@ -36,9 +40,15 @@ class ContactForm(ModelForm):
         ),
         required=False,
     )
-    
-    
+
+
     class Meta:
         model = Contact
         fields = "__all__"
-        
+
+class RegisterForm(UserCreationForm):
+    """ register user form """
+    class Meta:
+        model = User
+        #TODO: use in a template and views.py
+        fields = ("full_name","username", "email", "password1", "password2",)
