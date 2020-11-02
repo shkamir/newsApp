@@ -1,1 +1,4 @@
 - make register form -- > UserCreationForm -DONE
+- make login form 
+- after registering user don't have to login 
+- redirect to home after register or login 
