@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+    Login
+{% endblock title %}
+{% block content %}
+    <div class="container text-center align-items-center">
+        {% if messages %}
+            {% for message in messages %}
+            <span class="alert alert-primary align-content-center">{{message}}</span>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <form action="{% url 'app1:login' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-block btn-outline-success">
+    </form>
+
+{% endblock content %}

@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import News, Blog, NazarSanji, Contact
 from django.contrib import messages
 from django.db.models import Q
-from .forms import ContactForm, RegisterForm
+from .forms import ContactForm, RegisterForm, LoginForm
+from django.contrib.auth import login, authenticate
 
 # Create your views here.
 def base(request):
@@ -110,6 +111,11 @@ def register(request):
         form = RegisterForm(request.POST or None)
         if form.is_valid():
             form.save()
+            this_username = request.POST.get("username")
+            this_password = request.POST.get("password1")
+            user =  authenticate(username=this_username, password=this_password)
+            print(user)
+            login(request,user)
             messages.success(request, " Successfull.")
             return redirect('app1:home')
         else:
@@ -126,3 +132,21 @@ def register(request):
         "form": form   
     }
     return render(request, 'register.html', context)
+
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        # print(user)
+        if user.is_active:
+            login(request, user)
+            messages.success(request, "Welcome dear {}".format(username))
+            return redirect("app1:home")
+        else:
+            messages.error(request, "Dear {} your account has faced some issue's please contact us for more information".format(username))
+            return redirect('app1:login')
+    form = LoginForm()
+    return render(request, 'login.html', {"form": form})
+

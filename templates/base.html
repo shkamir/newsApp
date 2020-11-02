@@ -32,10 +32,14 @@
         <li class="nav-item active">
             <a class="nav-link" href="{% url 'app1:contact' %}">Contact <span class="sr-only">(current)</span></a>
           </li>
-
+        {% if not request.user.is_authenticated %}
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'app1:register' %}">Register <span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'app1:login' %}">Login <span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </nav>
@@ -62,6 +66,15 @@
           <div class="col-sm">
             <a type="button" class="btn btn-outline-dark active" href="{% url 'app1:contact' %}">Contact</a>
           </div>
+        {% if not request.user.is_authenticated %}
+
+          <div class="col-sm">
+            <a type="button" class="btn btn-outline-dark active" href="{% url 'app1:register' %}">Register</a>
+          </div>
+          <div class="col-sm">
+            <a type="button" class="btn btn-outline-dark active" href="{% url 'app1:login' %}">Login</a>
+          </div>
+        {% endif %}
         </div>
       </div>
     </div>
