@@ -8,3 +8,4 @@ migrations/
 media/
 *pyc
 config.json
+mail.py

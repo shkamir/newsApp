@@ -4,7 +4,8 @@ from django.contrib import messages
 from django.db.models import Q
 from .forms import ContactForm, RegisterForm, LoginForm
 from django.contrib.auth import login, authenticate, logout
-
+from django.core.mail import send_mail
+from .mail import mail
 # Create your views here.
 def base(request):
     return render(request, 'base.html')
@@ -66,7 +67,6 @@ def search(request):
     query = request.GET.get("q")
     button = request.GET.get("submitbutton")
     category = request.GET.get("category")
-    # TODO: make the choice to the client to search in blogs or news
     if query is not None:
         if category == "news":
             lookup = Q(title__icontains=query)
@@ -118,6 +118,15 @@ def register(request):
             login(request,user)
             messages.success(request, " Successfull.")
             return redirect('app1:home')
+            # sending mail
+            client_mails = []
+            client_mail = request.POST.get('email')
+            client_mails.append(client_mail)
+            subject = "Welcome"
+            msg = """  dear {user} welcome to our site we hope you have a nice time here. NewsApp Django  """.format(user=this_username)
+            from_mail = mail
+            send_mail(subject, msg, from_mail, client_mails)
+
         else:
             messages.error(request, " Failed.")
             print ("this is %s" % request.method)
@@ -153,3 +162,4 @@ def login_view(request):
 def logout_user(request):
     logout(request)
     return redirect("app1:home")
+
