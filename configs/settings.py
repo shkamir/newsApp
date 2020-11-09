@@ -11,16 +11,20 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import json
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+with open(os.path.join(BASE_DIR, 'config.json')) as secrets:
+    config = json.load(secrets)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'j+7(e8oaca2wd4(=w((q3v(t55tw@k4f3m2$d%p=)ktb2z@ryi'
+SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -134,3 +138,24 @@ CKEDITOR_CONFIGS = {
         "toolbar": "advanced",
     },
 }
+
+
+# django default backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# tls security
+EMAIL_USE_TLS = True
+
+# gmail smtp server
+EMAIL_HOST = 'smtp.gmail.com'
+
+# smtp port
+EMAIL_PORT = 587
+
+# email user name
+EMAIL_HOST_USER = config["EMAIL_HOST_USER"]
+
+# email password
+EMAIL_HOST_USER = config["EMAIL_HOST_PASSWORD"]
+
+

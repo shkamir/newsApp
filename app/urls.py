@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^search$', views.search, name='search'),
     path('register', views.register, name="register"),
     path('login', views.login_view, name="login"),
+    path('logout', views.logout_user, name="logout"),
     url(r"^contact$", views.contact, name="contact"),
     url(r'^comments$', views.comment, name='comment'),
     url(r'^news/more/(?P<id>[0-9]{1,})+/(?P<title>[\w+][^/]*)$', views.more_news, name='news-query'),

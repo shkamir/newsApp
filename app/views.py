@@ -3,7 +3,7 @@ from .models import News, Blog, NazarSanji, Contact
 from django.contrib import messages
 from django.db.models import Q
 from .forms import ContactForm, RegisterForm, LoginForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 def base(request):
@@ -150,3 +150,6 @@ def login_view(request):
     form = LoginForm()
     return render(request, 'login.html', {"form": form})
 
+def logout_user(request):
+    logout(request)
+    return redirect("app1:home")
