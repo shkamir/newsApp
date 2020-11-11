@@ -141,8 +141,11 @@ CKEDITOR_CONFIGS = {
 
 
 # django default backend
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+# email files 
+# EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 # tls security
 EMAIL_USE_TLS = True
 
