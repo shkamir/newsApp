@@ -2,4 +2,6 @@
 - make login form - DONE
 - after registering user don't have to login -DONE
 - redirect to home after register or login -DONE
-- make logout 
+- make logout - DONE
+- add reset password link with email - working
+--------------------------------------------------
