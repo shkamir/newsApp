@@ -1,7 +1,1 @@
-- make register form -- > UserCreationForm -DONE
-- make login form - DONE
-- after registering user don't have to login -DONE
-- redirect to home after register or login -DONE
-- make logout - DONE
-- add reset password link with email - working
---------------------------------------------------
+VimCrypt~03![6H&ÂÄ`óÉÈ Éá,ˆ—{.’+ÓóMÏº‡‚¢Å-S>p•©†T4–§İ¸üò®fgin<¢K©ıpB­!l»ÌWÉ3bË“=:dÍfyÂ™EÖãfÁ2âiá®í/Ïr28°SUêl.	Îúgm¢æ!ÀŠpgó»‹¡øS¬è]Îò¶s†@~ÙõnıAÉ€V7A‘¤ı¶Ÿn¦+tFŞã¥7¦&‡oSv@ûØı[ÄhoD1q:'sŸ<{ŞáH¹ˆFaš«»Zá›FªT¹pï²ÏÅ…„Ãâçà$\R­›xìjğ®¡Sş»Ãÿëş6ä´Ù»P\Ìuıéx,¬e#8.óõObG%³\WªT¬ßhò-gY¥øıtf„1Ôá±ëëº
